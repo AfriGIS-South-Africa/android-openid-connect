@@ -13,6 +13,7 @@ public final class Config {
     // TODO: Add the information you received from your OIDC provider below.
 
     public static final String clientId = "hendrikclient2";
+//public static final String clientId = "hendrikclient1";
     public static final String clientSecret = "hybridclient";
 
 //    public static final String authorizationServerUrl = "https://www.example.com/oauth2/authorize";
@@ -28,13 +29,14 @@ public final class Config {
     // of the authorisation process. It doesn't have to be a real URL, but it does have to be the
     // same URL that is registered with your provider.
 //    public static final String redirectUrl = "app://oidcsample.lnikkila.com";
-    public static final String redirectUrl = "https://localhost:8443/home";
+    //public static final String redirectUrl = "https://localhost:8443/home";
+    public static final String redirectUrl = "https://devnode.dev.afrigis.co.za/openid-connect-dem";
 
     // The `offline_access` scope enables us to request Refresh Tokens, so we don't have to ask the
     // user to authorise us again every time the tokens expire. Some providers might have an
     // `offline` scope instead. If you get an `invalid_scope` error when trying to authorise the
     // app, try changing it to `offline`.
-    public static final String[] scopes = {"openid", "profile", "offline_access"};
+    public static final String[] scopes = {"openid", "profile", "offline_access","AGApplications","AGHybridAppRole","email","roles"};
 
     public enum Flows
     {
