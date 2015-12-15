@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,18 +50,31 @@ public class HomeActivity extends Activity {
     public void doLogin(final View view) {
         // Grab all our accounts
         String accountType = getString(R.string.ACCOUNT_TYPE);
+        Log.d(HomeActivity.class.getName(),"Retrieving available accounts for type " + accountType + "...");
         final Account availableAccounts[] = accountManager.getAccountsByType(accountType);
+        Log.d(HomeActivity.class.getName(),"Accounts retrieved: " + availableAccounts);
 
         switch (availableAccounts.length) {
             // No account has been created, let's create one now
             case 0:
+//                try {
+//                    Account acc = new Account("yaddayadda", accountType);
+//                    accountManager.addAccountExplicitly (acc,"blaBla",null);
+//                    doLogin(view);
+//                }
+//                catch (Exception e) {
+//                    Log.e(getClass().getName(),"It broke",e);
+//                }
+
                 accountManager.addAccount(accountType, Authenticator.TOKEN_TYPE_ID, null, null,
                         this, new AccountManagerCallback<Bundle>() {
                             @Override
                             public void run(AccountManagerFuture<Bundle> futureManager) {
                                 // Unless the account creation was cancelled, try logging in again
                                 // after the account has been created.
-                                if (futureManager.isCancelled()) return;
+                                if (futureManager.isCancelled()) {
+                                    return;
+                                }
                                 doLogin(view);
                             }
                         }, null);

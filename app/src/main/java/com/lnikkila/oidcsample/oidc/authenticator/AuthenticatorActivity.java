@@ -79,7 +79,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         WebView webView = (WebView) findViewById(R.id.WebView);
 
         // TODO: Enable this if your authorisation page requires JavaScript
-        // webView.getSettings().setJavaScriptEnabled(true);
+         webView.getSettings().setJavaScriptEnabled(true);
 
         webView.loadUrl(authUrl);
 
